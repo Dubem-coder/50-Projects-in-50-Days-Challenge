@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div id="grade calculator" >
+            <h1>Grade Calculator</h1>
+<form id="gradeForm">
+    <div class="form-group">
+        <label for="maths">Maths</label>
+        <input type="number" name="maths" id="maths" placeholder="Enter your maths score">
+    </div>
+    <div class="form-group">
+        <label for="chemistry">Chemistry</label>
+        <input type="number" name="chemistry" id="chemistry" placeholder="Enter your chemistry score">
+    </div>
+    <div class="form-group">
+        <label for="english">English</label>
+        <input type="number" name="english" id="english" placeholder="Enter your english score">
+    </div>
+    <div class="form-group">
+        <label for="biology">Biology</label>
+        <input type="number" name="biology" id="biology" placeholder="Enter your biology score">
+    </div>
+    <div class="form-group">
+        <label for="physics">Physics</label>
+        <input type="number" name="physics" id="physics" placeholder="Enter your physics score">
+    </div>
+    <div class="form-group">
+        <button type="button" id="calculateBtn" onclick="calculateGrade()">Calculate Grade</button>
+    </div>
+</form>
+
+<div class="result" id="result"></div>
+
+
+        </div>
+    </div>
+</body>
+<script>
+    function calculateGrade() {
+        var maths = parseFloat(document.getElementById("maths").value);
+        var chemistry = parseFloat(document.getElementById("chemistry").value);
+        var english = parseFloat(document.getElementById("english").value);
+        var biology = parseFloat(document.getElementById("biology").value);
+        var physics = parseFloat(document.getElementById("physics").value);
+
+        var totalMarks = maths + chemistry + english + biology + physics;
+       var grade = getGrade(totalMarks)
+       var result = document.getElementById("result");
+      result.innerHTML = "";
+      result.innerHTML += "<p><strong>Total Marks:</strong> " + totalMarks.toFixed(2) + "</p>";
+      result.innerHTML += "<p><strong>Grade:</strong> " + grade + "</p>";
+    }
+       function getGrade(totalMarks) {
+        if (totalMarks >= 450) {
+            return "A";
+        } else if (totalMarks >= 400) {
+            return "B";
+        } else if (totalMarks >= 350) {
+            return "C";
+        } else if (totalMarks >= 300) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+</script>
+</html>
